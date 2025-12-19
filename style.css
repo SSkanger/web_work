@@ -1167,3 +1167,269 @@ body {
     font-size: 13px;
   }
 }
+
+/* 生活服务板块样式 */
+.life-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.life-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.life-tagline {
+  font-size: 18px;
+  color: var(--nk-gray-dark);
+  margin-top: 16px;
+  font-weight: 300;
+}
+
+.service-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.service-category {
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.service-category:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--nk-gray);
+}
+
+.category-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--nk-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  font-size: 24px;
+}
+
+.category-title {
+  font-size: 28px;
+  color: var(--nk-blue-dark);
+  font-weight: 600;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.service-item {
+  background: var(--nk-gray);
+  border-radius: var(--radius-md);
+  padding: 25px;
+  transition: var(--transition);
+  border: 1px solid #e9ecef;
+}
+
+.service-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  background: white;
+}
+
+.service-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-sm);
+  background: var(--nk-blue-light);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.service-name {
+  font-size: 20px;
+  color: var(--nk-blue-dark);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.service-desc {
+  color: var(--nk-gray-dark);
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.service-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.detail-item {
+  font-size: 14px;
+  color: var(--nk-gray-dark);
+  background: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.detail-item i {
+  color: var(--nk-blue);
+  font-size: 12px;
+}
+
+/* 服务提示样式 */
+.service-tips {
+  margin-top: 60px;
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+}
+
+.tips-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid var(--nk-gray);
+}
+
+.tips-header h3 {
+  font-size: 24px;
+  color: var(--nk-blue-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.tips-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+}
+
+.tip-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.tip-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--nk-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tip-text h4 {
+  font-size: 18px;
+  color: var(--nk-blue-dark);
+  margin-bottom: 8px;
+}
+
+.tip-text p {
+  color: var(--nk-gray-dark);
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* 响应式设计 - 生活服务板块 */
+@media (max-width: 992px) {
+  .service-category {
+    padding: 30px;
+  }
+  
+  .service-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .life-section {
+    padding: 60px 0;
+  }
+  
+  .service-category {
+    padding: 25px;
+  }
+  
+  .category-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .category-icon {
+    margin-right: 0;
+  }
+  
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-tips {
+    padding: 25px;
+  }
+  
+  .tips-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .life-section {
+    padding: 40px 0;
+  }
+  
+  .life-tagline {
+    font-size: 16px;
+  }
+  
+  .service-category {
+    padding: 20px;
+  }
+  
+  .category-title {
+    font-size: 24px;
+  }
+  
+  .service-item {
+    padding: 20px;
+  }
+  
+  .service-name {
+    font-size: 18px;
+  }
+  
+  .service-tips {
+    padding: 20px;
+  }
+}
