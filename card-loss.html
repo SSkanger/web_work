@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>校园卡挂失 - 南开大学服务网</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/card-loss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="assets/nk-logo.png" alt="南开大学Logo" class="logo-img" />
+                    <span class="logo-text">南开大学服务网</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link" data-section="home">首页</a></li>
+                    <li><a href="index.html#about" class="nav-link" data-section="about">学校介绍</a></li>
+                    <li><a href="index.html#map" class="nav-link" data-section="map">校园地图</a></li>
+                    <li><a href="index.html#life" class="nav-link active" data-section="life">生活服务</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a href="index.html">首页</a>
+                    <span class="separator">/</span>
+                    <a href="index.html#life">生活服务</a>
+                    <span class="separator">/</span>
+                    <span class="current">校园卡挂失</span>
+                </div>
+                <h1 class="page-title">校园卡挂失</h1>
+                <p class="page-description">如果您的校园卡丢失或被盗，请立即进行挂失操作，以保护您的账户安全</p>
+            </div>
+
+            <div class="card-loss-container">
+                <div class="card-loss-notice">
+                    <div class="notice-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="notice-content">
+                        <h3>重要提示</h3>
+                        <ul>
+                            <li>校园卡挂失后，原卡将立即失效，无法继续使用</li>
+                            <li>挂失后24小时内如找回原卡，可持本人有效证件到校园卡服务中心办理解挂</li>
+                            <li>补办新卡需缴纳工本费15元</li>
+                            <li>挂失成功后，原卡内的余额将自动转入新卡</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card-loss-form-container">
+                    <h2>挂失申请表</h2>
+                    <form id="cardLossForm" class="card-loss-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="studentId">学号 <span class="required">*</span></label>
+                                <input type="text" id="studentId" name="studentId" placeholder="请输入您的学号" required>
+                                <div class="error-message" id="studentIdError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="studentName">姓名 <span class="required">*</span></label>
+                                <input type="text" id="studentName" name="studentName" placeholder="请输入您的真实姓名" required>
+                                <div class="error-message" id="studentNameError"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="idCard">身份证号 <span class="required">*</span></label>
+                                <input type="text" id="idCard" name="idCard" placeholder="请输入您的身份证号码" required>
+                                <div class="error-message" id="idCardError"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardNumber">校园卡号 <span class="required">*</span></label>
+                                <input type="text" id="cardNumber" name="cardNumber" placeholder="请输入您的校园卡号（如不清楚可不填）">
+                                <div class="error-message" id="cardNumberError"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">联系电话 <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" placeholder="请输入您的手机号码" required>
+                            <div class="error-message" id="phoneError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lossReason">丢失原因 <span class="required">*</span></label>
+                            <select id="lossReason" name="lossReason" required>
+                                <option value="">请选择丢失原因</option>
+                                <option value="丢失">不慎丢失</option>
+                                <option value="被盗">被盗</option>
+                                <option value="损坏">严重损坏</option>
+                                <option value="其他">其他原因</option>
+                            </select>
+                            <div class="error-message" id="lossReasonError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lossTime">丢失时间 <span class="required">*</span></label>
+                            <input type="datetime-local" id="lossTime" name="lossTime" required>
+                            <div class="error-message" id="lossTimeError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lossLocation">丢失地点</label>
+                            <input type="text" id="lossLocation" name="lossLocation" placeholder="请输入可能的丢失地点（如记得）">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">详细描述</label>
+                            <textarea id="description" name="description" rows="4" placeholder="请详细描述丢失情况（选填）"></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-paper-plane"></i> 提交挂失申请
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> 重置表单
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-loss-steps">
+                    <h2>挂失后处理流程</h2>
+                    <div class="steps-container">
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>提交挂失申请</h3>
+                                <p>填写并提交挂失申请表单</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>系统验证</h3>
+                                <p>系统验证您的身份信息</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>挂失成功</h3>
+                                <p>原卡立即失效，收到挂失成功通知</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>补办新卡</h3>
+                                <p>持本人有效证件到校园卡服务中心补办新卡</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <h2>联系方式</h2>
+                    <div class="contact-items">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>校园卡服务中心</h4>
+                                <p>022-23501234</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>服务地址</h4>
+                                <p>学生活动中心一楼大厅</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h4>服务时间</h4>
+                                <p>周一至周五 8:30-17:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页面底部 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/nk-logo-white.png" alt="南开大学Logo" class="footer-logo-img" />
+                    <p class="footer-slogan">允公允能，日新月异</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-link-group">
+                        <h4>快速链接</h4>
+                        <ul>
+                            <li><a href="index.html#home" data-section="home">首页</a></li>
+                            <li><a href="index.html#about" data-section="about">学校介绍</a></li>
+                            <li><a href="index.html#map" data-section="map">校园地图</a></li>
+                            <li><a href="index.html#life" data-section="life">生活服务</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4>官方平台</h4>
+                        <ul>
+                            <li><a href="#">学校官网</a></li>
+                            <li><a href="#">教务系统</a></li>
+                            <li><a href="#">图书馆</a></li>
+                            <li><a href="#">邮件系统</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4>招生就业</h4>
+                        <ul>
+                            <li><a href="#">本科生招生</a></li>
+                            <li><a href="#">研究生招生</a></li>
+                            <li><a href="#">国际学生招生</a></li>
+                            <li><a href="#">就业信息网</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4>联系我们</h4>
+                        <ul>
+                            <li><a href="#">联系方式</a></li>
+                            <li><a href="#">校园地图</a></li>
+                            <li><a href="#">网站反馈</a></li>
+                            <li><a href="#">校长信箱</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 南开大学 版权所有 | 津ICP备12345678号</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 成功提示模态框 -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>挂失申请提交成功</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p>您的校园卡挂失申请已成功提交！</p>
+                <p class="report-number">挂失编号：<span id="lossNumber"></span></p>
+                <p>请妥善保存此编号，以便后续查询和补办校园卡时使用。</p>
+            </div>
+            <div class="modal-footer">
+                <button id="closeModal" class="btn btn-primary">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/card-loss.js"></script>
+</body>
+</html>
