@@ -1172,11 +1172,36 @@ body {
 .life-section {
   padding: 80px 0;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.life-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--nk-blue) 0%, var(--nk-blue-light) 50%, var(--nk-blue) 100%);
 }
 
 .life-header {
   text-align: center;
   margin-bottom: 60px;
+  position: relative;
+}
+
+.life-header::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--nk-blue);
+  border-radius: 3px;
 }
 
 .life-tagline {
@@ -1184,31 +1209,37 @@ body {
   color: var(--nk-gray-dark);
   margin-top: 16px;
   font-weight: 300;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .service-categories {
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 30px;
 }
 
 .service-category {
   background: white;
   border-radius: var(--radius-lg);
-  padding: 40px;
+  padding: 30px;
   box-shadow: var(--shadow-md);
-  transition: var(--transition);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--nk-blue);
 }
 
 .service-category:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .category-header {
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   padding-bottom: 15px;
   border-bottom: 2px solid var(--nk-gray);
 }
@@ -1217,52 +1248,97 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: var(--nk-blue);
+  background: linear-gradient(135deg, var(--nk-blue) 0%, var(--nk-blue-light) 100%);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 20px;
   font-size: 24px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+}
+
+.category-icon::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-category:hover .category-icon::after {
+  opacity: 1;
 }
 
 .category-title {
-  font-size: 28px;
+  font-size: 26px;
   color: var(--nk-blue-dark);
   font-weight: 600;
+  margin: 0;
 }
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
 .service-item {
   background: var(--nk-gray);
   border-radius: var(--radius-md);
   padding: 25px;
-  transition: var(--transition);
+  transition: all 0.3s ease;
   border: 1px solid #e9ecef;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--nk-blue);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
 }
 
 .service-item:hover {
-  transform: translateY(-3px);
+  transform: translateX(5px);
   box-shadow: var(--shadow-md);
   background: white;
+}
+
+.service-item:hover::before {
+  transform: scaleY(1);
 }
 
 .service-icon {
   width: 50px;
   height: 50px;
   border-radius: var(--radius-sm);
-  background: var(--nk-blue-light);
+  background: linear-gradient(135deg, var(--nk-blue-light) 0%, var(--nk-blue) 100%);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 15px;
   font-size: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.service-item:hover .service-icon {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-md);
 }
 
 .service-name {
@@ -1270,12 +1346,18 @@ body {
   color: var(--nk-blue-dark);
   margin-bottom: 10px;
   font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.service-item:hover .service-name {
+  color: var(--nk-blue);
 }
 
 .service-desc {
   color: var(--nk-gray-dark);
   margin-bottom: 15px;
   line-height: 1.6;
+  font-size: 15px;
 }
 
 .service-details {
@@ -1288,16 +1370,28 @@ body {
   font-size: 14px;
   color: var(--nk-gray-dark);
   background: white;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 20px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.service-item:hover .detail-item {
+  background: var(--nk-gray);
+  border-color: var(--nk-blue-light);
 }
 
 .detail-item i {
   color: var(--nk-blue);
   font-size: 12px;
+  transition: color 0.3s ease;
+}
+
+.service-item:hover .detail-item i {
+  color: var(--nk-blue-light);
 }
 
 /* 服务提示样式 */
