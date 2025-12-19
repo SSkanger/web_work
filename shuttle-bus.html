@@ -81,10 +81,11 @@
                         </div>
                         <div class="tips-content">
                             <ul>
-                                <li>校车服务时间：6:30-22:30</li>
-                                <li>工作日与周末班次时间不同，请选择正确的日期类型</li>
-                                <li>节假日班次安排请关注学校通知</li>
-                                <li>校车票价：校内师生凭校园卡免费乘坐</li>
+                                <li>校车服务时间：6:00-21:30（不同路线时间不同）</li>
+                                <li>八里台校区与津南校区之间票价5元，其他路线免费</li>
+                                <li>八里台校区至泰达校区有两个上车地点：西门二道岗西区公寓前和游泳馆东侧停车场</li>
+                                <li>工作日、周末和节假日班次时间不同，请选择正确的日期类型</li>
+                                <li>非工作日八里台-津南快线发车间隔为20-30分钟</li>
                                 <li>校车可能会因天气或特殊情况调整，请留意实时通知</li>
                             </ul>
                         </div>
@@ -95,12 +96,16 @@
                 <div class="schedule-type-section">
                     <div class="schedule-tabs">
                         <div class="tab-btn active" data-type="weekday">
-                            <i class="fas fa-briefcase"></i>
+                            <i class="fas fa-calendar-day"></i>
                             <span>工作日排班</span>
                         </div>
                         <div class="tab-btn" data-type="weekend">
                             <i class="fas fa-calendar-week"></i>
                             <span>非工作日排班</span>
+                        </div>
+                        <div class="tab-btn" data-type="holiday">
+                            <i class="fas fa-calendar-star"></i>
+                            <span>节假日排班</span>
                         </div>
                     </div>
                 </div>
@@ -118,278 +123,22 @@
                     <div class="schedule-tabs-content">
                         <!-- 工作日时刻表 -->
                         <div class="tab-content active" id="weekday-schedule">
-                            <div class="time-table">
-                                <div class="table-header">
-                                    <div class="header-cell">发车时间</div>
-                                    <div class="header-cell">预计到达</div>
-                                    <div class="header-cell">途经站点</div>
-                                    <div class="header-cell">车辆状态</div>
-                                </div>
-                                <div class="table-body">
-                                    <div class="table-row">
-                                        <div class="cell time-cell">07:00</div>
-                                        <div class="cell">07:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">08:00</div>
-                                        <div class="cell">08:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">09:00</div>
-                                        <div class="cell">09:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">10:00</div>
-                                        <div class="cell">10:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">11:00</div>
-                                        <div class="cell">11:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">12:00</div>
-                                        <div class="cell">12:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-full">满员</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">13:00</div>
-                                        <div class="cell">13:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">14:00</div>
-                                        <div class="cell">14:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">15:00</div>
-                                        <div class="cell">15:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">16:00</div>
-                                        <div class="cell">16:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">17:00</div>
-                                        <div class="cell">17:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">18:00</div>
-                                        <div class="cell">18:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">19:00</div>
-                                        <div class="cell">19:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">20:00</div>
-                                        <div class="cell">20:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">21:00</div>
-                                        <div class="cell">21:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">22:00</div>
-                                        <div class="cell">22:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-last">末班车</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- 时刻表内容将通过JavaScript动态生成 -->
                         </div>
-
+                        
                         <!-- 非工作日时刻表 -->
                         <div class="tab-content" id="weekend-schedule">
-                            <div class="time-table">
-                                <div class="table-header">
-                                    <div class="header-cell">发车时间</div>
-                                    <div class="header-cell">预计到达</div>
-                                    <div class="header-cell">途经站点</div>
-                                    <div class="header-cell">车辆状态</div>
-                                </div>
-                                <div class="table-body">
-                                    <div class="table-row">
-                                        <div class="cell time-cell">08:00</div>
-                                        <div class="cell">08:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">09:30</div>
-                                        <div class="cell">10:10</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">11:00</div>
-                                        <div class="cell">11:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">13:00</div>
-                                        <div class="cell">13:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">14:30</div>
-                                        <div class="cell">15:10</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">16:00</div>
-                                        <div class="cell">16:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">17:30</div>
-                                        <div class="cell">18:10</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">19:00</div>
-                                        <div class="cell">19:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">20:30</div>
-                                        <div class="cell">21:10</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-available">正常</span>
-                                        </div>
-                                    </div>
-                                    <div class="table-row">
-                                        <div class="cell time-cell">22:00</div>
-                                        <div class="cell">22:40</div>
-                                        <div class="cell">直达</div>
-                                        <div class="cell status-cell">
-                                            <span class="status status-last">末班车</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- 时刻表内容将通过JavaScript动态生成 -->
+                        </div>
+                        
+                        <!-- 节假日时刻表 -->
+                        <div class="tab-content" id="holiday-schedule">
+                            <!-- 时刻表内容将通过JavaScript动态生成 -->
                         </div>
                     </div>
                 </div>
 
-                <!-- 校区地图 -->
-                <div class="campus-map-section">
-                    <h2>校区位置</h2>
-                    <div class="campus-map">
-                        <div class="campus-info">
-                            <div class="campus-card balitai">
-                                <div class="campus-icon">
-                                    <i class="fas fa-university"></i>
-                                </div>
-                                <h3>八里台校区</h3>
-                                <p>天津市南开区卫津路94号</p>
-                                <div class="campus-coords">北纬39°07′，东经117°10′</div>
-                            </div>
-                            <div class="campus-card jinnan">
-                                <div class="campus-icon">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <h3>津南校区</h3>
-                                <p>天津市津南区同砚路38号</p>
-                                <div class="campus-coords">北纬38°59′，东经117°22′</div>
-                            </div>
-                            <div class="campus-card teda">
-                                <div class="campus-icon">
-                                    <i class="fas fa-building"></i>
-                                </div>
-                                <h3>泰达校区</h3>
-                                <p>天津市滨海新区宏达街23号</p>
-                                <div class="campus-coords">北纬39°02′，东经117°40′</div>
-                            </div>
-                        </div>
-                        <div class="map-placeholder">
-                            <i class="fas fa-map-marked-alt"></i>
-                            <p>校区位置示意图</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </main>

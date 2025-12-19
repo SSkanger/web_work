@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>体育馆预约 - 南开大学服务网</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/stadium-booking.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="assets/nk-logo.png" alt="南开大学Logo" class="logo-img" />
+                    <span class="logo-text">南开大学服务网</span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link" data-section="home">首页</a></li>
+                    <li><a href="index.html#about" class="nav-link" data-section="about">学校介绍</a></li>
+                    <li><a href="index.html#map" class="nav-link" data-section="map">校园地图</a></li>
+                    <li><a href="index.html#life" class="nav-link active" data-section="life">生活服务</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a href="index.html">首页</a>
+                    <span class="separator">/</span>
+                    <a href="index.html#life">生活服务</a>
+                    <span class="separator">/</span>
+                    <span class="current">体育馆预约</span>
+                </div>
+                <h1 class="page-title">体育馆预约</h1>
+                <p class="page-description">预约南开大学各校区体育馆场地</p>
+            </div>
+
+            <div class="stadium-booking-container">
+                <!-- 体育馆选择 -->
+                <div class="stadium-selection">
+                    <h2>选择体育馆</h2>
+                    <div class="stadium-options">
+                        <div class="stadium-card active" data-stadium="jinnan">
+                            <div class="stadium-icon">
+                                <i class="fas fa-basketball-ball"></i>
+                            </div>
+                            <h3>津南校区体育馆</h3>
+                            <p>开放时间：8:00 - 21:00</p>
+                        </div>
+                        <div class="stadium-card" data-stadium="balitai-old">
+                            <div class="stadium-icon">
+                                <i class="fas fa-volleyball-ball"></i>
+                            </div>
+                            <h3>八里台体育馆（老馆）</h3>
+                            <p>开放时间：6:30 - 21:00</p>
+                        </div>
+                        <div class="stadium-card" data-stadium="balitai-new">
+                            <div class="stadium-icon">
+                                <i class="fas fa-table-tennis"></i>
+                            </div>
+                            <h3>八里台体育中心（新馆）</h3>
+                            <p>开放时间：8:00 - 21:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 场馆类型选择 -->
+                <div class="venue-type-selection" id="venueTypeSelection" style="display: none;">
+                    <h2>选择场馆类型</h2>
+                    <div class="venue-type-options" id="venueTypeOptions">
+                        <!-- 场馆类型选项将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+
+                <!-- 场地选择 -->
+                <div class="venue-selection" id="venueSelection" style="display: none;">
+                    <h2>选择场地</h2>
+                    <div class="venue-options" id="venueOptions">
+                        <!-- 场地选项将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+
+                <!-- 预约表单 -->
+                <div class="booking-form">
+                    <h2>预约信息</h2>
+                    <form id="bookingForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="bookingDate">预约日期</label>
+                                <input type="date" id="bookingDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="bookingTime">预约时间</label>
+                                <select id="bookingTime" required>
+                                    <option value="">请选择时间段</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="duration">预约时长</label>
+                                <select id="duration" required>
+                                    <option value="1">1小时</option>
+                                    <option value="2">2小时</option>
+                                    <option value="3">3小时</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="userName">预约人姓名</label>
+                                <input type="text" id="userName" required placeholder="请输入您的姓名">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="userPhone">联系电话</label>
+                                <input type="tel" id="userPhone" required placeholder="请输入您的联系电话">
+                            </div>
+                            <div class="form-group">
+                                <label for="userId">学号/工号</label>
+                                <input type="text" id="userId" required placeholder="请输入您的学号/工号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="remarks">备注</label>
+                            <textarea id="remarks" rows="3" placeholder="如有特殊需求请在此说明"></textarea>
+                        </div>
+                        <div class="booking-summary">
+                            <h3>预约信息确认</h3>
+                            <div class="summary-content">
+                                <div class="summary-item">
+                                    <span class="label">体育馆：</span>
+                                    <span class="value" id="summaryStadium">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="label">场地：</span>
+                                    <span class="value" id="summaryVenue">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="label">日期：</span>
+                                    <span class="value" id="summaryDate">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="label">时间：</span>
+                                    <span class="value" id="summaryTime">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="label">时长：</span>
+                                    <span class="value" id="summaryDuration">-</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="label">费用：</span>
+                                    <span class="value" id="summaryFee">-</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" id="resetBtn">
+                                <i class="fas fa-redo"></i> 重置
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-check"></i> 确认预约
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- 预约须知 -->
+                <div class="booking-notice">
+                    <h2>预约须知</h2>
+                    <div class="notice-content">
+                        <ul>
+                            <li>预约系统仅提供未来四天内的场馆预约服务</li>
+                            <li>预约成功后，请在预约时间开始前15分钟到达场馆</li>
+                            <li>如需取消预约，请提前2小时联系场馆管理员</li>
+                            <li>请遵守场馆使用规定，爱护场馆设施</li>
+                            <li>逾期未使用且未取消的预约将被记录，可能影响后续预约</li>
+                            <li>场馆开放时间可能因特殊情况调整，请留意通知</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 预约成功提示 -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>预约成功</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p>您已成功预约体育馆场地！</p>
+                <p>预约详情已发送至您的手机，请注意查收。</p>
+                <div class="booking-details" id="bookingDetails">
+                    <!-- 预约详情将通过JavaScript动态生成 -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="confirmBtn">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面底部 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="assets/nk-logo-white.png" alt="南开大学Logo" class="footer-logo-img" />
+                    <p class="footer-slogan">允公允能，日新月异</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-link-group">
+                        <h4>快速链接</h4>
+                        <ul>
+                            <li><a href="index.html#home" data-section="home">首页</a></li>
+                            <li><a href="index.html#about" data-section="about">学校介绍</a></li>
+                            <li><a href="index.html#map" data-section="map">校园地图</a></li>
+                            <li><a href="index.html#life" data-section="life">生活服务</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4>官方平台</h4>
+                        <ul>
+                            <li><a href="#">学校官网</a></li>
+                            <li><a href="#">教务系统</a></li>
+                            <li><a href="#">图书馆</a></li>
+                            <li><a href="#">邮件系统</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4>招生就业</h4>
+                        <ul>
+                            <li><a href="#">本科生招生</a></li>
+                            <li><a href="#">研究生招生</a></li>
+                            <li><a href="#">国际学生招生</a></li>
+                            <li><a href="#">就业信息网</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-link-group">
+                        <h4>联系我们</h4>
+                        <ul>
+                            <li><a href="#">联系方式</a></li>
+                            <li><a href="#">校园地图</a></li>
+                            <li><a href="#">网站反馈</a></li>
+                            <li><a href="#">校长信箱</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 南开大学 版权所有 | 津ICP备12345678号</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/stadium-booking.js"></script>
+</body>
+</html>
