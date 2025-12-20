@@ -47,7 +47,7 @@
                 <div class="stadium-selection">
                     <h2>选择体育馆</h2>
                     <div class="stadium-options">
-                        <div class="stadium-card active" data-stadium="jinnan">
+                        <div class="stadium-card" data-stadium="jinnan">
                             <div class="stadium-icon">
                                 <i class="fas fa-basketball-ball"></i>
                             </div>
@@ -79,49 +79,64 @@
                     </div>
                 </div>
 
-                <!-- 场地选择 -->
+                <!-- 场地时间选择 -->
                 <div class="venue-selection" id="venueSelection" style="display: none;">
-                    <h2>选择场地</h2>
-                    <div class="venue-options" id="venueOptions">
-                        <!-- 场地选项将通过JavaScript动态生成 -->
+                    <h2>选择场地和时间</h2>
+                    <div class="venue-info" id="venueInfo">
+                        <!-- 场地信息将通过JavaScript动态生成 -->
+                    </div>
+                    <div class="date-selector">
+                        <label for="bookingDate">选择日期：</label>
+                        <select id="bookingDate">
+                            <!-- 日期选项将通过JavaScript动态生成 -->
+                        </select>
+                    </div>
+                    <div class="time-matrix-container">
+                        <div class="time-matrix" id="timeMatrix">
+                            <!-- 时间矩阵将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color available"></div>
+                            <span>空闲</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color occupied"></div>
+                            <span>已占用</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color selected"></div>
+                            <span>已选择</span>
+                        </div>
                     </div>
                 </div>
 
                 <!-- 预约表单 -->
-                <div class="booking-form">
+                <div class="booking-form" id="bookingFormSection" style="display: none;">
                     <h2>预约信息</h2>
+                    <div class="selected-slots-info">
+                        <h3>已选择的时间段</h3>
+                        <div id="selectedSlotsList">
+                            <!-- 已选择的时间段将通过JavaScript动态生成 -->
+                        </div>
+                        <div class="total-price">
+                            <span>总价格：</span>
+                            <span id="totalPrice">0</span>元
+                        </div>
+                    </div>
                     <form id="bookingForm">
                         <div class="form-row">
-                            <div class="form-group">
-                                <label for="bookingDate">预约日期</label>
-                                <input type="date" id="bookingDate" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="bookingTime">预约时间</label>
-                                <select id="bookingTime" required>
-                                    <option value="">请选择时间段</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="duration">预约时长</label>
-                                <select id="duration" required>
-                                    <option value="1">1小时</option>
-                                    <option value="2">2小时</option>
-                                    <option value="3">3小时</option>
-                                </select>
-                            </div>
                             <div class="form-group">
                                 <label for="userName">预约人姓名</label>
                                 <input type="text" id="userName" required placeholder="请输入您的姓名">
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="form-group">
                                 <label for="userPhone">联系电话</label>
                                 <input type="tel" id="userPhone" required placeholder="请输入您的联系电话">
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="form-group">
                                 <label for="userId">学号/工号</label>
                                 <input type="text" id="userId" required placeholder="请输入您的学号/工号">
@@ -130,35 +145,6 @@
                         <div class="form-group">
                             <label for="remarks">备注</label>
                             <textarea id="remarks" rows="3" placeholder="如有特殊需求请在此说明"></textarea>
-                        </div>
-                        <div class="booking-summary">
-                            <h3>预约信息确认</h3>
-                            <div class="summary-content">
-                                <div class="summary-item">
-                                    <span class="label">体育馆：</span>
-                                    <span class="value" id="summaryStadium">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="label">场地：</span>
-                                    <span class="value" id="summaryVenue">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="label">日期：</span>
-                                    <span class="value" id="summaryDate">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="label">时间：</span>
-                                    <span class="value" id="summaryTime">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="label">时长：</span>
-                                    <span class="value" id="summaryDuration">-</span>
-                                </div>
-                                <div class="summary-item">
-                                    <span class="label">费用：</span>
-                                    <span class="value" id="summaryFee">-</span>
-                                </div>
-                            </div>
                         </div>
                         <div class="form-actions">
                             <button type="button" class="btn btn-secondary" id="resetBtn">
