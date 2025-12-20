@@ -1271,6 +1271,24 @@ font-size: 13px;
   background: white;
 }
 
+/* 设施卡片链接样式 */
+.facility-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+.facility-card-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.facility-card-link:hover .facility-card {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-md);
+}
+
 .service-icon {
   width: 50px;
   height: 50px;
@@ -1451,4 +1469,136 @@ font-size: 13px;
   .service-tips {
     padding: 20px;
   }
+}
+
+/* 安全保障模态框样式 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: var(--nk-white);
+  margin: 10% auto;
+  padding: 0;
+  border-radius: var(--radius-md);
+  width: 90%;
+  max-width: 500px;
+  box-shadow: var(--shadow-lg);
+  animation: modalopen 0.4s;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: var(--nk-blue-dark);
+  font-size: 22px;
+}
+
+.close-btn {
+  color: var(--nk-gray-dark);
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.close-btn:hover {
+  color: var(--nk-blue);
+}
+
+.modal-body {
+  padding: 25px 20px;
+}
+
+.safety-info h4 {
+  color: var(--nk-blue-dark);
+  margin-bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.campus-info {
+  margin-bottom: 25px;
+  padding: 15px;
+  background-color: var(--nk-gray);
+  border-radius: var(--radius-sm);
+}
+
+.campus-info:last-child {
+  margin-bottom: 0;
+}
+
+.campus-info h5 {
+  color: var(--nk-blue);
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.phone-number {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--nk-gray-dark);
+  margin: 5px 0;
+  padding: 8px 15px;
+  background-color: var(--nk-white);
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--nk-blue);
+}
+
+/* 校医院模态框样式 */
+.hospital-info {
+  color: var(--nk-gray-dark);
+}
+
+.info-section {
+  margin-bottom: 25px;
+}
+
+.info-section:last-child {
+  margin-bottom: 0;
+}
+
+.info-section h4 {
+  color: var(--nk-blue-dark);
+  margin-bottom: 15px;
+  font-size: 20px;
+  border-bottom: 2px solid var(--nk-blue-light);
+  padding-bottom: 8px;
+}
+
+.info-section p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.location-info p, .contact-info p {
+  margin-bottom: 8px;
+  padding: 8px 0;
 }

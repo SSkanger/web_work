@@ -23,7 +23,7 @@
 <li><a href="#home" class="nav-link active" data-section="home">首页</a></li>
 <li><a href="#about" class="nav-link" data-section="about">学校介绍</a></li>
 <li><a href="#map" class="nav-link" data-section="map">校园地图</a></li>
-          <li><a href="#life" class="nav-link" data-section="life">生活服务</a></li>
+          <li><a href="#life" class="nav-link" data-section="life" id="lifeServiceLink">生活服务</a></li>
 </ul>
 </nav>
 </div>
@@ -112,7 +112,7 @@ class="fas fa-external-link-alt"></i></a>
 <div class="thumbnail-images">
 <img src="assets/nk-jinnan.jpg" alt="津南校区" class="thumbnail" />
 <img src="assets/nk-taida.jpg" alt="泰达校区" class="thumbnail" />
-<img src="assets/nk-library.jpg" alt="南开大学图书馆" class="thumbnail" />
+<a href="https://lib.nankai.edu.cn/" target="_blank"><img src="assets/nk-library.jpg" alt="南开大学图书馆" class="thumbnail" /></a>
 </div>
 </div>
 </div>
@@ -327,11 +327,13 @@ University），简称“南开”，始建于1919年，是由著名爱国教育
 <h3 class="about-section-title">校园设施</h3>
 </div>
 <div class="facilities-grid">
+<a href="https://lib.nankai.edu.cn/" target="_blank" class="facility-card-link">
 <div class="facility-card">
 <img src="assets/facility-library.jpg" alt="图书馆" class="facility-image" />
 <h4 class="facility-title">图书馆</h4>
 <p class="facility-desc">总建筑面积达7.8万平方米，藏书400余万册，拥有丰富的电子资源和古籍文献</p>
 </div>
+</a>
 <div class="facility-card">
 <img src="assets/facility-lab.jpg" alt="实验室" class="facility-image" />
 <h4 class="facility-title">实验室</h4>
@@ -535,17 +537,19 @@ University），简称“南开”，始建于1919年，是由著名爱国教育
                 </div>
               </div>
             </a>
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="fas fa-shield-alt"></i>
+            <a href="#" class="service-item-link" id="safety-service-link">
+              <div class="service-item">
+                <div class="service-icon">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4 class="service-name">安全保障</h4>
+                <p class="service-desc">24小时安保、监控系统、门禁管理</p>
+                <div class="service-details">
+                  <span class="detail-item"><i class="fas fa-phone"></i> 022-2350xxxx</span>
+                  <span class="detail-item"><i class="fas fa-clock"></i> 24小时</span>
+                </div>
               </div>
-              <h4 class="service-name">安全保障</h4>
-              <p class="service-desc">24小时安保、监控系统、门禁管理</p>
-              <div class="service-details">
-                <span class="detail-item"><i class="fas fa-phone"></i> 022-2350xxxx</span>
-                <span class="detail-item"><i class="fas fa-clock"></i> 24小时</span>
-              </div>
-            </div>
+            </a>
             <div>
             </div>
           </div>
@@ -638,28 +642,32 @@ University），简称“南开”，始建于1919年，是由著名爱国教育
             <h3 class="category-title">医疗健康</h3>
           </div>
           <div class="service-grid">
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="fas fa-clinic-medical"></i>
+            <a href="#" class="service-item-link" id="hospital-service-link">
+              <div class="service-item">
+                <div class="service-icon">
+                  <i class="fas fa-clinic-medical"></i>
+                </div>
+                <h4 class="service-name">校医院</h4>
+                <p class="service-desc">门诊时间、科室介绍、医保报销</p>
+                <div class="service-details">
+                  <span class="detail-item"><i class="fas fa-clock"></i> 08:00-17:00</span>
+                  <span class="detail-item"><i class="fas fa-phone"></i> 022-2350xxxx</span>
+                </div>
               </div>
-              <h4 class="service-name">校医院</h4>
-              <p class="service-desc">门诊时间、科室介绍、医保报销</p>
-              <div class="service-details">
-                <span class="detail-item"><i class="fas fa-clock"></i> 08:00-17:00</span>
-                <span class="detail-item"><i class="fas fa-phone"></i> 022-2350xxxx</span>
+            </a>
+            <a href="psychological-counseling.html" class="service-item-link">
+              <div class="service-item">
+                <div class="service-icon">
+                  <i class="fas fa-heartbeat"></i>
+                </div>
+                <h4 class="service-name">心理咨询</h4>
+                <p class="service-desc">心理健康服务、预约方式、咨询团队</p>
+                <div class="service-details">
+                  <span class="detail-item"><i class="fas fa-phone"></i> 022-2350xxxx</span>
+                  <span class="detail-item"><i class="fas fa-envelope"></i> xlzx@nankai.edu.cn</span>
+                </div>
               </div>
-            </div>
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="fas fa-heartbeat"></i>
-              </div>
-              <h4 class="service-name">心理咨询</h4>
-              <p class="service-desc">心理健康服务、预约方式、咨询团队</p>
-              <div class="service-details">
-                <span class="detail-item"><i class="fas fa-phone"></i> 022-2350xxxx</span>
-                <span class="detail-item"><i class="fas fa-envelope"></i> xlzx@nankai.edu.cn</span>
-              </div>
-            </div>
+            </a>
             <div>
             </div>
           </div>
@@ -687,28 +695,32 @@ University），简称“南开”，始建于1919年，是由著名爱国教育
                 </div>
               </div>
             </a>
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="fas fa-book-open"></i>
+            <a href="https://lib.nankai.edu.cn/" target="_blank" class="service-item-link">
+              <div class="service-item">
+                <div class="service-icon">
+                  <i class="fas fa-book-open"></i>
+                </div>
+                <h4 class="service-name">图书馆</h4>
+                <p class="service-desc">开放时间、借阅规则、电子资源</p>
+                <div class="service-details">
+                  <span class="detail-item"><i class="fas fa-clock"></i> 08:00-22:00</span>
+                  <span class="detail-item"><i class="fas fa-book"></i> 400万+藏书</span>
+                </div>
               </div>
-              <h4 class="service-name">图书馆</h4>
-              <p class="service-desc">开放时间、借阅规则、电子资源</p>
-              <div class="service-details">
-                <span class="detail-item"><i class="fas fa-clock"></i> 08:00-22:00</span>
-                <span class="detail-item"><i class="fas fa-book"></i> 400万+藏书</span>
+            </a>
+            <a href="club-activities.html" class="service-item-link">
+              <div class="service-item">
+                <div class="service-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h4 class="service-name">学生社团</h4>
+                <p class="service-desc">社团列表、活动预告、加入方式</p>
+                <div class="service-details">
+                  <span class="detail-item"><i class="fas fa-users-cog"></i> 200+社团</span>
+                  <span class="detail-item"><i class="fas fa-calendar"></i> 每学期招新</span>
+                </div>
               </div>
-            </div>
-            <div class="service-item">
-              <div class="service-icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <h4 class="service-name">学生社团</h4>
-              <p class="service-desc">社团列表、活动预告、加入方式</p>
-              <div class="service-details">
-                <span class="detail-item"><i class="fas fa-users-cog"></i> 200+社团</span>
-                <span class="detail-item"><i class="fas fa-calendar"></i> 每学期招新</span>
-              </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -766,7 +778,7 @@ University），简称“南开”，始建于1919年，是由著名爱国教育
 <li><a href="#home" data-section="home">首页</a></li>
 <li><a href="#about" data-section="about">学校介绍</a></li>
 <li><a href="#map" data-section="map">校园地图</a></li>
-              <li><a href="#life" data-section="life">生活服务</a></li>
+              <li><a href="#life" data-section="life" id="lifeServiceLink2">生活服务</a></li>
 </ul>
 </div>
 <div class="footer-link-group">
@@ -801,6 +813,66 @@ University），简称“南开”，始建于1919年，是由著名爱国教育
 </div>
 </div>
 </footer>
+
+<!-- 安全保障模态框 -->
+<div id="safety-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>校园安全保障</h3>
+            <span class="close-btn" id="close-safety-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="safety-info">
+                <h4>校园报警电话</h4>
+                <div class="campus-info">
+                    <h5>八里台校区</h5>
+                    <p class="phone-number">23508962</p>
+                    <p class="phone-number">23508122</p>
+                </div>
+                <div class="campus-info">
+                    <h5>津南校区</h5>
+                    <p class="phone-number">85358962</p>
+                    <p class="phone-number">85358122</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 校医院模态框 -->
+<div id="hospital-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>南开大学校医院</h3>
+            <span class="close-btn" id="close-hospital-modal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <div class="hospital-info">
+                <div class="info-section">
+                    <h4>主要职责</h4>
+                    <p>南开大学医院是天津市城镇职工基本医疗保险和城乡居民基本医疗保险定点一级医院，是校内医疗服务窗口单位，为校内师生员工、离退休教职工提供基础医疗及预防保健服务，同时承担着学校的健康教育课、传染病防控、健康体检、健康宣传等公共卫生任务，以及学校重大活动和会议的医疗保障服务。</p>
+                </div>
+                
+                <div class="info-section">
+                    <h4>办公地点</h4>
+                    <div class="location-info">
+                        <p><strong>八里台校区：</strong>院内生科院西侧</p>
+                        <p><strong>津南校区：</strong>院内近西北门</p>
+                    </div>
+                </div>
+                
+                <div class="info-section">
+                    <h4>联系方式</h4>
+                    <div class="contact-info">
+                        <p class="phone-number">022-85358311（24小时值班电话）</p>
+                        <p class="phone-number">022-23498770（八里台校区）</p>
+                        <p class="phone-number">022-85358311（津南校区）</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- 音效 -->
 <audio id="hover-sound" src="assets/hover.mp3" preload="auto"></audio>

@@ -36,8 +36,52 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       const sectionId = this.getAttribute('data-section');
-      switchSection(sectionId);
+      
+      // 特殊处理生活服务链接
+      if (sectionId === 'life') {
+        // 确保生活服务板块正确激活
+        switchSection(sectionId);
+        
+        // 滚动到生活服务板块
+        const lifeSection = document.getElementById('life');
+        if (lifeSection) {
+          setTimeout(() => {
+            lifeSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }, 300);
+        }
+      } else {
+        switchSection(sectionId);
+      }
     });
+  });
+
+  // 特殊处理生活服务链接（通过ID）
+  const lifeServiceLinks = ['lifeServiceLink', 'lifeServiceLink2'];
+  lifeServiceLinks.forEach(linkId => {
+    const link = document.getElementById(linkId);
+    if (link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const sectionId = this.getAttribute('data-section');
+        
+        // 确保生活服务板块正确激活
+        switchSection(sectionId);
+        
+        // 滚动到生活服务板块
+        const lifeSection = document.getElementById('life');
+        if (lifeSection) {
+          setTimeout(() => {
+            lifeSection.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }, 300);
+        }
+      });
+    }
   });
 
   // 所有带data-section属性的按钮点击事件
@@ -634,9 +678,85 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // 恢复默认提示，隐藏图片
       infoTitle.textContent = "操作提示";
-      infoBody.textContent = "鼠标移动到地图上的某栋建筑区域，会看到发光浮起；点击后高亮会一直存在，并在右侧显示对应介绍。按 Esc 取消当前选择。";
+      infoBody.textContent = "鼠标移动到地图上的某些建筑区域，会看到发光浮动；点击后高亮会一直存在，并在右侧显示对应照片。按 Esc 取消当前选择。";
       infoImageContainer.style.display = "none";
       infoImageContainer.innerHTML = "";
+    }
+  });
+
+  // ========== 安全保障模态框功能 ==========
+  const safetyServiceLink = document.getElementById('safety-service-link');
+  const safetyModal = document.getElementById('safety-modal');
+  const closeSafetyModal = document.getElementById('close-safety-modal');
+
+  // 点击安全保障链接显示模态框
+  if (safetyServiceLink) {
+    safetyServiceLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      safetyModal.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // 禁止背景滚动
+    });
+  }
+
+  // 点击关闭按钮关闭模态框
+  if (closeSafetyModal) {
+    closeSafetyModal.addEventListener('click', function() {
+      safetyModal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // 恢复背景滚动
+    });
+  }
+
+  // 点击模态框外部关闭模态框
+  window.addEventListener('click', function(event) {
+    if (event.target === safetyModal) {
+      safetyModal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // 恢复背景滚动
+    }
+  });
+
+  // 按ESC键关闭模态框
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && safetyModal.style.display === 'block') {
+      safetyModal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // 恢复背景滚动
+    }
+  });
+
+  // ========== 校医院模态框功能 ==========
+  const hospitalServiceLink = document.getElementById('hospital-service-link');
+  const hospitalModal = document.getElementById('hospital-modal');
+  const closeHospitalModal = document.getElementById('close-hospital-modal');
+
+  // 点击校医院链接显示模态框
+  if (hospitalServiceLink) {
+    hospitalServiceLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      hospitalModal.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // 禁止背景滚动
+    });
+  }
+
+  // 点击关闭按钮关闭模态框
+  if (closeHospitalModal) {
+    closeHospitalModal.addEventListener('click', function() {
+      hospitalModal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // 恢复背景滚动
+    });
+  }
+
+  // 点击模态框外部关闭模态框
+  window.addEventListener('click', function(event) {
+    if (event.target === hospitalModal) {
+      hospitalModal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // 恢复背景滚动
+    }
+  });
+
+  // 按ESC键关闭模态框
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && hospitalModal.style.display === 'block') {
+      hospitalModal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // 恢复背景滚动
     }
   });
 });
