@@ -14,18 +14,27 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('导航链接:', link.getAttribute('data-section'), '文本:', link.textContent);
   });
   
-  // 检查URL中的锚点，如果有则切换到对应板块
+  // 初始化所有板块为隐藏状态
+  sections.forEach(section => {
+    section.style.display = 'none';
+  });
+  
+  // 检查URL中的锚点，如果有则切换到对应板块，否则显示首页
   const hash = window.location.hash;
   if (hash) {
     const sectionId = hash.substring(1); // 去掉#号
     const targetSection = document.getElementById(sectionId);
     if (targetSection) {
-      console.log('检测到URL锚点:', sectionId, '，自动切换到对应板块');
-      // 延迟执行，确保所有元素都已加载
-      setTimeout(() => {
-        switchSection(sectionId);
-      }, 100);
+      console.log('检测到URL锚点:', sectionId, '，直接显示对应板块');
+      // 立即显示目标板块，不使用延迟
+      switchSection(sectionId);
+    } else {
+      // 如果锚点对应的板块不存在，显示首页
+      switchSection('home');
     }
+  } else {
+    // 如果没有锚点，显示首页
+    switchSection('home');
   }
   
   const internalLinks = document.querySelectorAll('a[href^="#"]');
@@ -69,9 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 默认显示首页
-  switchSection('home');
-
   // 导航链接点击事件
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -88,6 +94,12 @@ document.addEventListener('DOMContentLoaded', function() {
       // 如果是校园地图链接，允许默认跳转行为
       if (href && href.includes('map.html')) {
         console.log('跳转到校园地图页面');
+        return; // 允许默认跳转行为
+      }
+      
+      // 如果是生活服务链接，允许默认跳转行为
+      if (href && href.includes('life.html')) {
+        console.log('跳转到生活服务页面');
         return; // 允许默认跳转行为
       }
       
