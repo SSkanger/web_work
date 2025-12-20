@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>导航测试</title>
+  <style>
+    .section {
+      display: none;
+      padding: 20px;
+      border: 1px solid #ccc;
+      margin: 10px 0;
+    }
+    .section.active {
+      display: block !important;
+    }
+    .nav-link {
+      margin: 0 10px;
+      cursor: pointer;
+    }
+    .nav-link.active {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="nav-link active" data-section="home">首页</a>
+    <a class="nav-link" data-section="about">学校介绍</a>
+    <a class="nav-link" data-section="map">校园地图</a>
+  </nav>
+
+  <div id="home" class="section active">
+    <h2>首页内容</h2>
+    <p>这是首页的内容</p>
+  </div>
+
+  <div id="about" class="section">
+    <h2>学校介绍内容</h2>
+    <p>这是学校介绍的内容</p>
+  </div>
+
+  <div id="map" class="section">
+    <h2>校园地图内容</h2>
+    <p>这是校园地图的内容</p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('.section');
+      
+      console.log('找到的板块数量:', sections.length);
+      sections.forEach(section => {
+        console.log('板块ID:', section.id, '类名:', section.className);
+      });
+      
+      console.log('找到的导航链接数量:', navLinks.length);
+      navLinks.forEach(link => {
+        console.log('导航链接:', link.getAttribute('data-section'), '文本:', link.textContent);
+      });
+      
+      function switchSection(sectionId) {
+        console.log('切换到板块:', sectionId);
+        
+        // 更新导航激活状态
+        navLinks.forEach(link => {
+          if (link.getAttribute('data-section') === sectionId) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+
+        // 更新板块显示
+        sections.forEach(section => {
+          if (section.id === sectionId) {
+            section.classList.add('active');
+            section.style.display = 'block';
+            console.log('显示板块:', section.id, '计算样式:', window.getComputedStyle(section).display);
+          } else {
+            section.classList.remove('active');
+            section.style.display = 'none';
+          }
+        });
+      }
+
+      // 导航链接点击事件
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const sectionId = this.getAttribute('data-section');
+          console.log('点击导航链接:', sectionId);
+          
+          if (sectionId) {
+            e.preventDefault();
+            switchSection(sectionId);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

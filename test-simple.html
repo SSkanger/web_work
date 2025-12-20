@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试导航</title>
+    <style>
+        .section {
+            display: none;
+            padding: 20px;
+            border: 1px solid #ccc;
+            margin: 10px 0;
+        }
+        .section.active {
+            display: block;
+        }
+        .nav-link.active {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#home" class="nav-link active" data-section="home">首页</a>
+        <a href="#about" class="nav-link" data-section="about">学校介绍</a>
+        <a href="#map" class="nav-link" data-section="map">校园地图</a>
+    </nav>
+
+    <div id="home" class="section active">首页内容</div>
+    <div id="about" class="section">学校介绍内容</div>
+    <div id="map" class="section">校园地图内容</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM加载完成');
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            
+            console.log('找到的导航链接数量:', navLinks.length);
+            console.log('找到的板块数量:', sections.length);
+            
+            function switchSection(sectionId) {
+                console.log('切换到板块:', sectionId);
+                
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-section') === sectionId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                
+                sections.forEach(section => {
+                    if (section.id === sectionId) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            }
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const sectionId = this.getAttribute('data-section');
+                    console.log('点击导航链接:', sectionId);
+                    
+                    if (sectionId) {
+                        e.preventDefault();
+                        switchSection(sectionId);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
