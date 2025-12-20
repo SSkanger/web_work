@@ -3,85 +3,78 @@ document.addEventListener('DOMContentLoaded', function() {
   const navLinks = document.querySelectorAll('.nav-link');
   const sectionButtons = document.querySelectorAll('[data-section]');
   const sections = document.querySelectorAll('.section');
+  
+  console.log('找到的板块数量:', sections.length);
+  sections.forEach(section => {
+    console.log('板块ID:', section.id, '类名:', section.className);
+  });
+  
+  console.log('找到的导航链接数量:', navLinks.length);
+  navLinks.forEach(link => {
+    console.log('导航链接:', link.getAttribute('data-section'), '文本:', link.textContent);
+  });
+  
   const internalLinks = document.querySelectorAll('a[href^="#"]');
 
   // 切换板块函数
   function switchSection(sectionId) {
-    // 更新导航激活状态
-    navLinks.forEach(link => {
-      if (link.getAttribute('data-section') === sectionId) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
+  console.log('切换到板块:', sectionId); // 添加调试信息
+  
+  // 更新导航激活状态
+  navLinks.forEach(link => {
+    console.log('导航链接状态:', link.getAttribute('data-section'), link.classList.contains('active'));
+    if (link.getAttribute('data-section') === sectionId) {
+      link.classList.add('active');
+      console.log('添加active类到导航:', sectionId);
+    } else {
+      link.classList.remove('active');
+    }
+  });
 
-    // 更新板块显示
-    sections.forEach(section => {
-      if (section.id === sectionId) {
-        section.classList.add('active');
-        // 平滑滚动到顶部
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      } else {
-        section.classList.remove('active');
-      }
-    });
-  }
+  // 更新板块显示
+  sections.forEach(section => {
+    console.log('板块状态:', section.id, section.classList.contains('active'));
+    if (section.id === sectionId) {
+      console.log('显示板块:', section.id);
+      console.log('板块内容长度:', section.innerHTML.length);
+      console.log('板块子元素数量:', section.children.length);
+      section.classList.add('active');
+      section.style.display = 'block'; // 直接设置显示属性
+      section.style.visibility = 'visible'; // 确保可见性
+      section.style.opacity = '1'; // 确保不透明
+      section.style.height = 'auto'; // 确保有高度
+      console.log('板块active类添加成功:', section.id);
+      console.log('板块计算样式:', window.getComputedStyle(section).display);
+      console.log('板块offsetHeight:', section.offsetHeight);
+      console.log('板块clientHeight:', section.clientHeight);
+      // 平滑滚动到顶部
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    } else {
+      section.classList.remove('active');
+      section.style.display = 'none'; // 直接设置隐藏属性
+    }
+  });
+}
+
+  // 默认显示首页
+  switchSection('home');
 
   // 导航链接点击事件
   navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
-      e.preventDefault();
       const sectionId = this.getAttribute('data-section');
+      console.log('点击导航链接:', sectionId); // 添加调试信息
       
-      // 特殊处理生活服务链接
-      if (sectionId === 'life') {
-        // 确保生活服务板块正确激活
-        switchSection(sectionId);
-        
-        // 滚动到生活服务板块
-        const lifeSection = document.getElementById('life');
-        if (lifeSection) {
-          setTimeout(() => {
-            lifeSection.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }, 300);
-        }
-      } else {
+      // 如果有data-section属性，则切换板块
+      if (sectionId) {
+        e.preventDefault();
         switchSection(sectionId);
       }
+      // 否则，允许默认行为（跳转到其他页面）
     });
-  });
-
-  // 特殊处理生活服务链接（通过ID）
-  const lifeServiceLinks = ['lifeServiceLink', 'lifeServiceLink2'];
-  lifeServiceLinks.forEach(linkId => {
-    const link = document.getElementById(linkId);
-    if (link) {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const sectionId = this.getAttribute('data-section');
-        
-        // 确保生活服务板块正确激活
-        switchSection(sectionId);
-        
-        // 滚动到生活服务板块
-        const lifeSection = document.getElementById('life');
-        if (lifeSection) {
-          setTimeout(() => {
-            lifeSection.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }, 300);
-        }
-      });
-    }
   });
 
   // 所有带data-section属性的按钮点击事件
@@ -513,17 +506,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   ];
 
-  // ========== 2. 初始化元素和变量 ==========
-  const mapContainer = document.querySelector(".map-container");
-  const infoTitle = document.getElementById("info-title");
-  const infoBody = document.getElementById("info-body");
-  const infoImageContainer = document.getElementById("info-image-container");
-  const hoverSound = document.getElementById("hover-sound");
-  const clickSound = document.getElementById("click-sound");
+    // ========== 2. 初始化元素和变量 ==========
+    const mapContainer = document.querySelector(".map-container");
+    const infoTitle = document.getElementById("info-title");
+    const infoBody = document.getElementById("info-body");
+    const infoImageContainer = document.getElementById("info-image-container");
+    const hoverSound = document.getElementById("hover-sound");
+    const clickSound = document.getElementById("click-sound");
 
-  let activeHotspot = null;
+    let activeHotspot = null;
 
-  // ========== 3. 工具函数 ==========
+    // ========== 3. 工具函数 ==========
   function playSound(audioEl) {
     if (!audioEl) return;
     try {
@@ -678,85 +671,335 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // 恢复默认提示，隐藏图片
       infoTitle.textContent = "操作提示";
-      infoBody.textContent = "鼠标移动到地图上的某些建筑区域，会看到发光浮动；点击后高亮会一直存在，并在右侧显示对应照片。按 Esc 取消当前选择。";
+      infoBody.textContent = "鼠标移动到地图上的某栋建筑区域，会看到发光浮起；点击后高亮会一直存在，并在右侧显示对应介绍。按 Esc 取消当前选择。";
       infoImageContainer.style.display = "none";
       infoImageContainer.innerHTML = "";
     }
   });
 
   // ========== 安全保障模态框功能 ==========
-  const safetyServiceLink = document.getElementById('safety-service-link');
+  // 简单直接的方法
+  const safetyLink = document.getElementById('safety-service-link');
   const safetyModal = document.getElementById('safety-modal');
   const closeSafetyModal = document.getElementById('close-safety-modal');
-
-  // 点击安全保障链接显示模态框
-  if (safetyServiceLink) {
-    safetyServiceLink.addEventListener('click', function(e) {
+  
+  if (safetyLink) {
+    safetyLink.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       safetyModal.style.display = 'block';
-      document.body.style.overflow = 'hidden'; // 禁止背景滚动
+      document.body.style.overflow = 'hidden';
     });
   }
-
-  // 点击关闭按钮关闭模态框
+  
   if (closeSafetyModal) {
     closeSafetyModal.addEventListener('click', function() {
       safetyModal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // 恢复背景滚动
+      document.body.style.overflow = 'auto';
     });
   }
-
-  // 点击模态框外部关闭模态框
-  window.addEventListener('click', function(event) {
-    if (event.target === safetyModal) {
-      safetyModal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // 恢复背景滚动
-    }
-  });
-
-  // 按ESC键关闭模态框
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' && safetyModal.style.display === 'block') {
-      safetyModal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // 恢复背景滚动
-    }
-  });
-
+  
   // ========== 校医院模态框功能 ==========
-  const hospitalServiceLink = document.getElementById('hospital-service-link');
+  const hospitalLink = document.getElementById('hospital-service-link');
   const hospitalModal = document.getElementById('hospital-modal');
   const closeHospitalModal = document.getElementById('close-hospital-modal');
-
-  // 点击校医院链接显示模态框
-  if (hospitalServiceLink) {
-    hospitalServiceLink.addEventListener('click', function(e) {
+  
+  if (hospitalLink) {
+    hospitalLink.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       hospitalModal.style.display = 'block';
-      document.body.style.overflow = 'hidden'; // 禁止背景滚动
+      document.body.style.overflow = 'hidden';
     });
   }
-
-  // 点击关闭按钮关闭模态框
+  
   if (closeHospitalModal) {
     closeHospitalModal.addEventListener('click', function() {
       hospitalModal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // 恢复背景滚动
+      document.body.style.overflow = 'auto';
     });
   }
-
-  // 点击模态框外部关闭模态框
+  
+  // 点击模态框外部关闭
   window.addEventListener('click', function(event) {
-    if (event.target === hospitalModal) {
+    if (event.target == safetyModal) {
+      safetyModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    
+    if (event.target == hospitalModal) {
       hospitalModal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // 恢复背景滚动
+      document.body.style.overflow = 'auto';
     }
   });
-
-  // 按ESC键关闭模态框
-  document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' && hospitalModal.style.display === 'block') {
-      hospitalModal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // 恢复背景滚动
+  
+  // ========== 地图功能 ==========
+  // 检查是否在地图板块
+  const mapSection = document.getElementById('map');
+  if (mapSection) {
+    // 地图相关常量
+    const ENABLE_DRAG = false;
+    const ENABLE_DEBUG_BOX = false;
+    
+    // 确保地图板块有正确的样式
+    mapSection.style.display = 'block';
+    
+    // 建筑热点数据
+    const HOTSPOT_DATA = [
+      {
+        id: 72,
+        title: "主体育场",
+        description: "位于南开大学津南校区体育部区域，是校园内主要的田径及大型体育活动场地之一。该体育场包括一个带看台的400米标准跑道和足球场，供校学生体质测试、田径比赛、足球赛、校运会等使用。",
+        images: [
+          "assets/buildings/tennis-1.jpg",
+          "assets/buildings/tennis-2.jpg",
+        ],
+        left: 55.05, top: 28.93, width: 3.5, height: 3
+      },
+      {
+        id: 71,
+        title: "学生活动中心",
+        description: "南开大学学生活动中心 通常指校内专为学生组织社团活动、文化交流、会议及各类文体活动的场所，具有丰富的校园生活功能。",
+        images: [
+          "assets/71.jpg",
+        ],
+        left: 58.28, top: 38.87, width: 3.5, height: 3
+      },
+      {
+        id: 70,
+        title: "东园",
+        description: "一个公园，中间有个湖",
+        images: [
+          "assets/buildings/tennis-1.jpg",
+          "assets/buildings/tennis-2.jpg",
+        ],
+        left: 63.66, top: 39.35, width: 3.5, height: 3
+      },
+      {
+        id: 69,
+        title: "学院组团",
+        description: "许多学院楼的位置",
+        images: [
+          "assets/buildings/tennis-1.jpg",
+          "assets/buildings/tennis-2.jpg",
+        ],
+        left: 65.09, top: 46.14, width: 3.5, height: 3
+      },
+      {
+        id: 68,
+        title: "学生四食堂",
+        description: "师生用餐的地方",
+        images: [
+          "assets/buildings/tennis-1.jpg",
+          "assets/buildings/tennis-2.jpg",
+        ],
+        left: 63.12, top: 52.2, width: 3.5, height: 3
+      },
+      {
+        id: 67,
+        title: "学生宿舍",
+        description: "学生休息的地方",
+        images: [
+          "assets/buildings/tennis-1.jpg",
+          "assets/buildings/tennis-2.jpg",
+        ],
+        left: 67.96, top: 58.02, width: 3.5, height: 3
+      },
+      {
+        id: 66,
+        title: "体育馆",
+        description: "南开大学体育馆是南开大学体育部管理下的重要室内体育场馆之一，用于体育教学、日常运动训练、比赛和各类校园活动。",
+        images: [
+          "assets/66.jpg",
+        ],
+        left: 49.31, top: 29.67, width: 3.5, height: 3
+      },
+      {
+        id: 65,
+        title: "基础实验楼",
+        description: "学生做实验的地方",
+        images: [
+          "assets/buildings/tennis-1.jpg",
+          "assets/buildings/tennis-2.jpg",
+        ],
+        left: 52.36, top: 35, width: 3.5, height: 3
+      },
+      {
+        id: 64,
+        title: "综合实验楼",
+        description: "南开大学综合实验楼 是南开大学校园内用于科学实验教学与科研的重要实验建筑之一。它在校园实验资源与科研活动体系中承担着关键角色。",
+        images: [
+          "assets/64.jpg",
+        ],
+        left: 53.26, top: 42.27, width: 3.5, height: 3
+      },
+      {
+        id: 63,
+        title: "公共教学楼",
+        description: "南开大学公共教学楼 是南开大学校园内主要的教学活动场所之一，承担大型公共课程、课堂教学、讲座活动等教学功能。南开大学在多个校区均设有教学楼，但\"公共教学楼\"通常指位于津南校区的主要综合教学建筑群。",
+        images: [
+          "assets/62.jpg",
+        ],
+        left: 45.91, top: 37.42, width: 3.5, height: 3
+      },
+      {
+        id: 62,
+        title: "公共教学楼",
+        description: "南开大学公共教学楼 是南开大学校园内主要的教学活动场所之一，承担大型公共课程、课堂教学、讲座活动等教学功能。南开大学在多个校区均设有教学楼，但\"公共教学楼\"通常指位于津南校区的主要综合教学建筑群。",
+        images: [
+          "assets/62.jpg",
+        ],
+        left: 45.91, top: 42.02, width: 3.5, height: 3
+      },
+      {
+        id: 59,
+        title: "周恩来总理像",
+        description: "周恩来总理的雕像",
+        images: [
+          "assets/59.jpg",
+        ],
+        left: 49.49, top: 54.14, width: 3.5, height: 3
+      },
+      {
+        id: 61,
+        title: "图书馆",
+        description: "南开大学津南校区图书馆是南开大学图书馆体系中的中心馆，于津南校区建设阶段同步建设并于2015 年投入使用，是新校区核心学术与学习空间。",
+        images: [
+          "assets/61.webp",
+        ],
+        left: 49.67, top: 46.87, width: 3.5, height: 3
+      },
+      {
+        id: 60,
+        title: "综合业务楼（东楼）",
+        description: "师生处理各种业务的地方",
+        images: [
+          "assets/buildings/tennis-1.jpg",
+          "assets/buildings/tennis-2.jpg",
+        ],
+        left: 54.15, top: 50.02, width: 3.5, height: 3
+      },
+      {
+        id: 58,
+        title: "综合业务楼（西楼）",
+        description: "师生处理各种业务的地方",
+        images: [
+          "assets/buildings/tennis-1.jpg",
+          "assets/buildings/tennis-2.jpg",
+        ],
+        left: 45.37, top: 50.5, width: 3.5, height: 3
+      }
+    ];
+    
+    // 初始化地图功能
+    function initMap() {
+      const mapContainer = document.querySelector(".map-container");
+      const infoTitle = document.getElementById("info-title");
+      const infoBody = document.getElementById("info-body");
+      const infoImageContainer = document.getElementById("info-image-container");
+      
+      if (!mapContainer || !infoTitle || !infoBody) return;
+      
+      let activeHotspot = null;
+      
+      // 创建建筑热点
+      function createHotspots() {
+        HOTSPOT_DATA.forEach((item) => {
+          const hotspot = document.createElement("div");
+          hotspot.className = "hotspot";
+          
+          // 设置热点位置和大小
+          hotspot.style.left = item.left + "%";
+          hotspot.style.top = item.top + "%";
+          hotspot.style.width = item.width + "%";
+          hotspot.style.height = item.height + "%";
+          
+          // 存储数据到 DOM 元素
+          hotspot.dataset.title = item.title;
+          hotspot.dataset.description = item.description;
+          hotspot.dataset.image = item.images ? item.images[0] : "";
+          
+          mapContainer.appendChild(hotspot);
+          
+          // 点击事件：显示文字+图片
+          hotspot.addEventListener("click", (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            // 取消之前的激活状态
+            if (activeHotspot && activeHotspot !== hotspot) {
+              activeHotspot.classList.remove("active");
+            }
+            activeHotspot = hotspot;
+            hotspot.classList.add("active");
+            
+            // 更新标题和正文
+            infoTitle.textContent = item.title || `编号 ${item.id}`;
+            infoBody.innerHTML = item.description || "这个建筑暂时还没有详细介绍。";
+            
+            // 处理图片
+            if (item.images && item.images.length > 0) {
+              infoImageContainer.innerHTML = "";
+              item.images.forEach(imageSrc => {
+                const img = document.createElement("img");
+                img.src = imageSrc;
+                img.alt = item.title || "建筑图片";
+                img.className = "info-image";
+                img.onerror = () => {
+                  img.style.display = "none";
+                };
+                infoImageContainer.appendChild(img);
+              });
+              infoImageContainer.style.display = "block";
+            } else {
+              infoImageContainer.style.display = "none";
+            }
+          });
+        });
+      }
+      
+      // 初始化热点
+      createHotspots();
+      
+      // ESC键取消选择
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" || event.key === "Esc") {
+          if (activeHotspot) {
+            activeHotspot.classList.remove("active");
+            activeHotspot = null;
+          }
+          
+          // 恢复默认提示，隐藏图片
+          infoTitle.textContent = "操作提示";
+          infoBody.textContent = "鼠标移动到地图上的某栋建筑区域，会看到发光浮起；点击后高亮会一直存在，并在右侧显示对应介绍。按 Esc 取消当前选择。";
+          infoImageContainer.style.display = "none";
+          infoImageContainer.innerHTML = "";
+        }
+      });
     }
-  });
+    
+    // 当切换到地图板块时初始化地图
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+          if (mapSection.classList.contains('active')) {
+            console.log('地图板块激活，初始化地图');
+            // 确保地图板块有正确的样式
+            mapSection.style.display = 'block';
+            initMap();
+          }
+        }
+      });
+    });
+    
+    observer.observe(mapSection, { attributes: true });
+    
+    // 如果地图板块已经是激活状态，立即初始化
+    if (mapSection.classList.contains('active')) {
+      console.log('地图板块已激活，立即初始化地图');
+      // 确保地图板块有正确的样式
+      mapSection.style.display = 'block';
+      initMap();
+    }
+  }
 });

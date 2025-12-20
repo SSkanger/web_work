@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>南开大学服务网 | 校园地图</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <header class="header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="index.html" class="logo">
+          <img src="assets/南开大学logo.jpg" alt="南开大学Logo" class="logo-img" />
+          <span class="logo-text">南开大学服务网</span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">首页</a></li>
+          <li><a href="about.html" class="nav-link">学校介绍</a></li>
+          <li><a href="map.html" class="nav-link active">校园地图</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 校园地图板块 -->
+  <section id="map" class="section map-section active">
+    <div class="container">
+      <div class="page">
+        <header class="page-header">
+          <h1>南开大学交互地图</h1>
+          <p>鼠标滑过某栋建筑会发光浮起，点击后高亮锁定并显示对应介绍，按 Esc 取消选择。</p>
+        </header>
+
+        <main class="layout">
+          <!-- 左侧地图 -->
+          <section class="map-panel">
+            <div class="map-container">
+              <img src="assets/nk-map.jpg" alt="南开大学手绘地图" class="campus-map" />
+              <!-- 建筑热点由 map.js 动态生成 -->
+            </div>
+          </section>
+
+          <!-- 右侧信息栏 -->
+          <aside class="info-panel">
+            <div class="info-box">
+              <h2 class="info-title" id="info-title">操作提示</h2>
+              <div class="info-image-container" id="info-image-container" style="display: none;"></div>
+              <p class="info-body" id="info-body">
+                鼠标移动到地图上某栋建筑区域，会看到该建筑发光浮起；
+                点击后高亮会一直存在，并在右侧显示对应文字介绍。
+                按 Esc 取消当前选择。
+              </p>
+            </div>
+
+            <div class="hint-box">
+              <p>操作说明：</p>
+              <ul>
+                <li>🖱️ 滑过建筑：黄色高亮 + 浮起效果 + 提示音</li>
+                <li>🖱️ 左键点击：蓝色高亮锁定 + 文字介绍+图片</li>
+                <li>⎋ Esc：取消高亮，恢复默认提示</li>
+                <li>🛠️ 调试：热点可拖拽，松手后控制台打印新 left/top</li>
+              </ul>
+            </div>
+          </aside>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">
+          <img src="assets/南开大学logo.jpg" alt="南开大学Logo" class="footer-logo-img" />
+          <p class="footer-slogan">允公允能，日新月异</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-link-group">
+            <h4>快速链接</h4>
+            <ul>
+              <li><a href="index.html">首页</a></li>
+              <li><a href="about.html">学校介绍</a></li>
+              <li><a href="map.html">校园地图</a></li>
+            </ul>
+          </div>
+          <div class="footer-link-group">
+            <h4>官方平台</h4>
+            <ul>
+              <li><a href="https://www.nankai.edu.cn" target="_blank">南开大学官网</a></li>
+              <li><a href="https://jwc.nankai.edu.cn" target="_blank">教务处</a></li>
+              <li><a href="https://graduate.nankai.edu.cn" target="_blank">研究生院</a></li>
+              <li><a href="https://xsc.nankai.edu.cn" target="_blank">学生工作处</a></li>
+            </ul>
+          </div>
+          <div class="footer-link-group">
+            <h4>招生就业</h4>
+            <ul>
+              <li><a href="https://zsb.nankai.edu.cn" target="_blank">本科招生</a></li>
+              <li><a href="https://graduate.nankai.edu.cn" target="_blank">研究生招生</a></li>
+              <li><a href="https://job.nankai.edu.cn" target="_blank">就业指导中心</a></li>
+            </ul>
+          </div>
+          <div class="footer-link-group">
+            <h4>联系我们</h4>
+            <ul>
+              <li><i class="fas fa-map-marker-alt"></i> 天津市南开区卫津路94号</li>
+              <li><i class="fas fa-phone"></i> 022-23508219</li>
+              <li><i class="fas fa-envelope"></i> office@nankai.edu.cn</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 南开大学 版权所有 | 津ICP备12345678号</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 音效（地图页用） -->
+  <audio id="hover-sound" src="assets/hover.mp3" preload="auto"></audio>
+  <audio id="click-sound" src="assets/click.mp3" preload="auto"></audio>
+
+  <script src="map.js"></script>
+</body>
+</html>
